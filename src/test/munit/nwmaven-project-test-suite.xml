@@ -9,5 +9,6 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     </spring:beans>
     <munit:test name="nwmaven-project-test-suite-retrieveFlightsTest" description="Test">
         <flow-ref name="retrieveFlights" doc:name="retrieveFlights"/>
+        <munit:assert-payload-equals message="Payload not matching" expectedValue="[{DESTINATION=SFO, PRICE=555, ORIGIN=YYZ, ID=0}, {DESTINATION=LAX, PRICE=450, ORIGIN=YYZ, ID=1}, {DESTINATION=SEA, PRICE=777, ORIGIN=SQL, ID=2}, {DESTINATION=SFO, PRICE=999, ORIGIN=SQL, ID=3}]" doc:name="validate payload"/>
     </munit:test>
 </mule>
