@@ -5,7 +5,7 @@
       <username>${env.MULE_USER}</username>
       <password>${env.MULE_AUTH}</password>
     </server>
-  </servers>
+   </servers>
   <pluginGroups>
     <pluginGroup>org.mule.tools</pluginGroup>
   </pluginGroups>

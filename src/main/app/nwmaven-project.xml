@@ -22,8 +22,4 @@ http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/
         <object-to-string-transformer doc:name="Object to String"/>
         <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
     </flow>
-    <flow name="nwmavenFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/hello" allowedMethods="GET" doc:name="HTTP"/>
-        <set-payload value="#['Hello Maven']" doc:name="Set Payload"/>
-    </flow>
 </mule>

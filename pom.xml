@@ -12,15 +12,18 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
+		<project.version>testmaven-cbi-dev</project.version>
 		<mule.version>3.8.2</mule.version>
 		<mule.tools.version>1.2</mule.tools.version>
 		<derby.version>10.12.1.1</derby.version>
 		<munit.version>1.2.1</munit.version>
 		<mule.munit.support.version>3.8.1</mule.munit.support.version>
+		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
+		<github.global.server>github</github.global.server>
 	</properties>
 
 	<distributionManagement>
+		<!-- temporary staging repository -->
 		<repository>
 			<id>internal.repo</id>
 			<name>Temporary Staging Repository</name>
@@ -94,6 +97,7 @@
 					</coverage>
 				</configuration>
 			</plugin>
+			<!-- Mule Maven deployment plugin -->
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
@@ -106,11 +110,13 @@
 					<workerType>Micro</workerType>
 					<redeploy>true</redeploy>
 					<environment>Development</environment>
+					<applicationName>testmaven-cbi-dev</applicationName>
+					<applications>
+						<application>${app.location}</application>
+					</applications>
 				</configuration>
 				<executions>
 					<execution>
-						<id>deploy</id>
-						<phase>deploy</phase>
 						<goals>
 							<goal>deploy</goal>
 						</goals>
@@ -123,6 +129,31 @@
 				<configuration>
 					<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.19.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.mulesoft.munit.tools</groupId>
+						<artifactId>munit-maven-plugin</artifactId>
+						<version>${munit.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<includes>
+						<include>src/test/it</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 
