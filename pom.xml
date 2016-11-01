@@ -111,9 +111,6 @@
 					<redeploy>true</redeploy>
 					<environment>Development</environment>
 					<applicationName>testmaven-cbi-dev</applicationName>
-					<applications>
-						<application>${app.location}</application>
-					</applications> 
 				</configuration>
 				<executions>
 					<execution>
