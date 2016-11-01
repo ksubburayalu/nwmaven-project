@@ -111,9 +111,9 @@
 					<redeploy>true</redeploy>
 					<environment>Development</environment>
 					<applicationName>testmaven-cbi-dev</applicationName>
-					<applications>
+					<!--   <applications>
 						<application>/home/ubuntu/nwmaven-project/target/testmaven-cbi-1.0.0-SNAPSHOT.zip</application>
-					</applications>
+					</applications> -->
 				</configuration>
 				<executions>
 					<execution>
