@@ -110,7 +110,7 @@
 					<workerType>Micro</workerType>
 					<redeploy>true</redeploy>
 					<environment>Development</environment>
-					<applicationName>testmaven-cbi-dev</applicationName>
+					<applicationName>testmaven-cbi-${env.ENV}</applicationName>
 				</configuration>
 				<executions>
 					<execution>
