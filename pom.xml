@@ -70,6 +70,9 @@
 								<resource>
 									<directory>mappings/</directory>
 								</resource>
+									<resource>
+									<directory>src/it/</directory>
+								</resource>
 							</resources>
 						</configuration>
 					</execution>
@@ -102,41 +105,36 @@
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>2.1</version>
+
+				<configuration>
+					<deploymentType>cloudhub</deploymentType>
+					<muleVersion>${mule.version}</muleVersion>
+					<username>${env.MULE_ANYPOINT_USER}</username>
+					<password>${env.MULE_ANYPOINT_PASS}</password>
+					<workerType>Micro</workerType>
+					<redeploy>true</redeploy>
+					<environment>Development</environment>
+					<applicationName>testmaven-cbi-dev</applicationName>
+					<properties>
+						<http.port>8081</http.port>
+						<http.version>1.0</http.version>
+					</properties>
+				</configuration>
 				<executions>
 					<execution>
 						<id>deploy-devch</id>
 						<phase>devdeployment</phase>
 						<goals>
-							<goal>deploy-devch</goal>
+							<goal>deploy</goal>
 						</goals>
-						<configuration>
-							<deploymentType>cloudhub</deploymentType>
-							<muleVersion>${mule.version}</muleVersion>
-							<username>${env.MULE_ANYPOINT_USER}</username>
-							<password>${env.MULE_ANYPOINT_PASS}</password>
-							<workerType>Micro</workerType>
-							<redeploy>true</redeploy>
-							<environment>Development</environment>
-							<applicationName>testmaven-cbi-dev</applicationName>
-						</configuration>
 					</execution>
-					<execution>
-						<id>deploy-testch</id>
-						<phase>testdeployment</phase>
-						<goals>
-							<goal>deploy-testch</goal>
-						</goals>
-						<configuration>
-							<deploymentType>cloudhub</deploymentType>
-							<muleVersion>${mule.version}</muleVersion>
-							<username>${env.MULE_ANYPOINT_USER}</username>
-							<password>${env.MULE_ANYPOINT_PASS}</password>
-							<workerType>Micro</workerType>
-							<redeploy>true</redeploy>
-							<environment>Test</environment>
-							<applicationName>testmaven-cbi-test</applicationName>
-						</configuration>
-					</execution>
+
+					<!-- <execution> <id>deploy-testch</id> <phase>testdeployment</phase> 
+						<goals> <goal>deploy</goal> </goals> <configuration> <deploymentType>cloudhub</deploymentType> 
+						<muleVersion>${mule.version}</muleVersion> <username>${env.MULE_ANYPOINT_USER}</username> 
+						<password>${env.MULE_ANYPOINT_PASS}</password> <workerType>Micro</workerType> 
+						<redeploy>true</redeploy> <environment>Test</environment> <applicationName>testmaven-cbi-test</applicationName> 
+						</configuration> </execution> -->
 				</executions>
 			</plugin>
 			<plugin>
@@ -152,7 +150,7 @@
 				</dependencies>
 				<configuration>
 					<includes>
-						<include>**/*it/*</include>
+						<include>**/it/*</include>
 					</includes>
 				</configuration>
 				<executions>
