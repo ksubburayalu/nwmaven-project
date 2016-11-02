@@ -104,7 +104,7 @@
 				<version>2.1</version>
 				<configuration>
 					<deploymentType>cloudhub</deploymentType>
-					<muleVersion>3.8.2</muleVersion>
+					<muleVersion>${mule.version}</muleVersion>
 					<username>${env.MULE_ANYPOINT_USER}</username>
 					<password>${env.MULE_ANYPOINT_PASS}</password>
 					<workerType>Micro</workerType>
@@ -116,6 +116,37 @@
 					<execution>
 						<id>deploy-devch</id>
 						<phase>devdeployment</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>2.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.19.1</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<deploymentType>cloudhub</deploymentType>
+					<muleVersion>${mule.version}</muleVersion>
+					<username>${env.MULE_ANYPOINT_USER}</username>
+					<password>${env.MULE_ANYPOINT_PASS}</password>
+					<workerType>Micro</workerType>
+					<redeploy>true</redeploy>
+					<environment>Test</environment>
+					<applicationName>testmaven-cbi-test</applicationName>
+				</configuration>
+				<executions>
+					<execution>
+						<id>deploy-testch</id>
+						<phase>testdeployment</phase>
 						<goals>
 							<goal>deploy</goal>
 						</goals>

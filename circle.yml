@@ -4,10 +4,11 @@ machine:
 #dependencies
 dependencies:
   override:
-    - mvn clean package mule:deploy integration-test -s settings.xml
+    - mvn clean package mule:deploy@deploy-devch integration-test -s settings.xml
 #test
 test:
   override:
+    - mvn mule:deploy@deploy-testch
     - echo 'Skip Tests'
 
   
