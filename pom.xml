@@ -113,7 +113,7 @@
 					<workerType>Micro</workerType>
 					<redeploy>true</redeploy>
 					<environment>${environment}</environment>
-					<applicationName>${appname}</applicationName>
+					<applicationName>testmaven-cbi-dev</applicationName>
 					<properties>
 						<http.port>8081</http.port>
 						<http.version>1.0</http.version>
