@@ -70,7 +70,7 @@
 								<resource>
 									<directory>mappings/</directory>
 								</resource>
-									<resource>
+								<resource>
 									<directory>src/it/</directory>
 								</resource>
 							</resources>
@@ -112,8 +112,8 @@
 					<password>${env.MULE_ANYPOINT_PASS}</password>
 					<workerType>Micro</workerType>
 					<redeploy>true</redeploy>
-					<environment>${environment}</environment>
-					<applicationName>testmaven-cbi-dev</applicationName>
+					<environment>${cloudhub.environment}</environment>
+					<applicationName>testmave-cbi-${environment}</applicationName>
 					<properties>
 						<http.port>8081</http.port>
 						<http.version>1.0</http.version>
@@ -173,6 +173,8 @@
 			</testResource>
 		</testResources>
 	</build>
+
+
 
 	<!-- Mule Dependencies -->
 	<dependencies>
