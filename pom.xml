@@ -112,8 +112,8 @@
 					<password>${env.MULE_ANYPOINT_PASS}</password>
 					<workerType>Micro</workerType>
 					<redeploy>true</redeploy>
-					<environment>Development</environment>
-					<applicationName>testmaven-cbi-dev</applicationName>
+					<environment>${environment}</environment>
+					<applicationName>${appname}</applicationName>
 					<properties>
 						<http.port>8081</http.port>
 						<http.version>1.0</http.version>

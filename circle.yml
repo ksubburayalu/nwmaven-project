@@ -4,7 +4,7 @@ machine:
 #dependencies
 dependencies:
   override:
-    - mvn clean package mule:deploy integration-test -s settings.xml
+    - mvn clean package mule:deploy "-Denvironment=Development,applicationName=testmaven-cbi-dev" integration-test -s settings.xml
 #test
 test:
   override:
