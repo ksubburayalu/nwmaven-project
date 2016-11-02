@@ -4,11 +4,11 @@ machine:
 #dependencies
 dependencies:
   override:
-    - mvn clean package mule:deploy "-Denvironment=Development,-DapplicationName=testmaven-cbi-dev" integration-test -s settings.xml
+    - mvn clean package mule:deploy "-Denvironment=Development" "-DapplicationName=testmaven-cbi-dev" integration-test -s settings.xml
 #test
 test:
   override:
-    - mvn mule:deploy "-Denvironment=Test,-DapplicationName=testmaven-cbi-test"
+    - mvn mule:deploy "-Denvironment=Test" "-DapplicationName=testmaven-cbi-test"
     - echo 'Skip Tests'
 
   
