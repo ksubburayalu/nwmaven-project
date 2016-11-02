@@ -8,7 +8,7 @@ dependencies:
 #test
 test:
   override:
-    - mvn mule:deploy -Denvironment=Test,applicationName=testmaven-cbi-test
-     - echo 'Skip Tests'
+    - mvn mule:deploy "-Denvironment=Test,applicationName=testmaven-cbi-test"
+    - echo 'Skip Tests'
 
   
