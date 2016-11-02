@@ -10,5 +10,6 @@ test:
   override:
     - mvn mule:deploy -Denvironment=Test -DapplicationName=testmaven-cbi-test
     - echo 'Skip Tests'
-
-  
+  post:
+    - git tag production-1.0.0
+    - git push origin production-1.0.0
