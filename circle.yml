@@ -3,9 +3,6 @@ machine:
     version: openjdk8
 #dependencies
 dependencies:
-  pre:
-    - npm install
-    - npm install -g anypoint-cli
   override:
     - mvn clean package mule:deploy -Denvironment=Development -DapplicationName=testmaven-cbi-dev integration-test -s settings.xml
 #test

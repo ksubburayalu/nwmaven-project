@@ -100,6 +100,13 @@
 					</coverage>
 				</configuration>
 			</plugin>
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-deploy-plugin</artifactId>
+			  <configuration>
+			    <skip>true</skip>
+			  </configuration>
+			</plugin>
 			<!-- Mule Maven deployment plugin -->
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
@@ -173,8 +180,6 @@
 			</testResource>
 		</testResources>
 	</build>
-
-
 
 	<!-- Mule Dependencies -->
 	<dependencies>
