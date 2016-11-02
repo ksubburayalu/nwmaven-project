@@ -1,0 +1,13 @@
+machine:
+  java:
+    version: openjdk8
+#dependencies
+dependencies:
+  override:
+    - mvn clean package mule:deploy -s settings.xml
+#test
+test:
+  override:
+    - mvn integration-test
+
+  

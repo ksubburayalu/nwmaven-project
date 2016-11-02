@@ -133,7 +133,7 @@
 				</dependencies>
 				<configuration>
 					<includes>
-						<include>src/test/it</include>
+						<include>src/it/*</include>
 					</includes>
 				</configuration>
 				<executions>
@@ -141,6 +141,7 @@
 						<id>integration-test</id>
 						<goals>
 							<goal>integration-test</goal>
+							<goal>verify</goal>
 						</goals>
 					</execution>
 				</executions>

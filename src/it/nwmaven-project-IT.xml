@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <munit:config name="munit" doc:name="MUnit configuration"/>
+    <spring:beans>
+        <spring:import resource="classpath:nwmaven-project.xml"/>
+    </spring:beans>
+    <http:request-config name="HTTP_Request_Configuration" host="testmaven-cbi-dev.cloudhub.io" port="80" doc:name="HTTP Request Configuration"/>
+    <munit:test name="nwmaven-project-IT" description="Test">
+        <http:request config-ref="HTTP_Request_Configuration" path="/flights" method="GET" doc:name="HTTP"/>
+        <logger message="In Integration Test" level="INFO" doc:name="Logger"/>
+        <munit:assert-payload-equals message="Payload not matching" expectedValue="[{DESTINATION=SFO, PRICE=555, ORIGIN=YYZ, ID=0}, {DESTINATION=LAX, PRICE=450, ORIGIN=YYZ, ID=1}, {DESTINATION=SEA, PRICE=777, ORIGIN=SQL, ID=2}, {DESTINATION=SFO, PRICE=999, ORIGIN=SQL, ID=3}]" doc:name="validate payload"/>
+    </munit:test>
+</mule>
