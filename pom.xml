@@ -119,8 +119,6 @@
 					<password>${env.MULE_ANYPOINT_PASS}</password>
 					<workerType>Micro</workerType>
 					<redeploy>true</redeploy>
-					<environment>${cloudhub.environment}</environment>
-					<applicationName>${applicatioName}</applicationName>
 					<properties>
 						<http.port>8081</http.port>
 						<http.version>1.0</http.version>
