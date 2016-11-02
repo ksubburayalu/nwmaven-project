@@ -113,7 +113,7 @@
 					<workerType>Micro</workerType>
 					<redeploy>true</redeploy>
 					<environment>${cloudhub.environment}</environment>
-					<applicationName>testmave-cbi-${environment}</applicationName>
+					<applicationName>${applicatioName}</applicationName>
 					<properties>
 						<http.port>8081</http.port>
 						<http.version>1.0</http.version>
