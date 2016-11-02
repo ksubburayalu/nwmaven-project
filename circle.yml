@@ -8,7 +8,6 @@ dependencies:
 #test
 test:
   override:
-    - mvn mule:deploy
     - echo 'Skip Tests'
 
   
