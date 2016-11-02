@@ -100,13 +100,6 @@
 					</coverage>
 				</configuration>
 			</plugin>
-			<plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-deploy-plugin</artifactId>
-			  <configuration>
-			    <skip>true</skip>
-			  </configuration>
-			</plugin>
 			<!-- Mule Maven deployment plugin -->
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
@@ -119,6 +112,8 @@
 					<password>${env.MULE_ANYPOINT_PASS}</password>
 					<workerType>Micro</workerType>
 					<redeploy>true</redeploy>
+					<environment>Development</environment>
+					<applicationName>testmaven-cbi-dev</applicationName>
 					<properties>
 						<http.port>8081</http.port>
 						<http.version>1.0</http.version>
