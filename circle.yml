@@ -3,6 +3,8 @@ machine:
     version: openjdk8
 #dependencies
 dependencies:
+  pre:
+    - mvn --fail-never dependency:go-offline || true
   override:
     - mvn clean package mule:deploy -Denvironment=Development -DapplicationName=testmaven-cbi-dev -DworkerType=Micro integration-test -s settings.xml
 #test
@@ -11,7 +13,7 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/munit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/munit/ \;
     - sleep 1m
-    - curl -s -o response.txt -X GET http://testmaven-cbi-dev.cloudhub.io/flight --fail
+    - curl -s -o response.txt -X GET http://testmaven-cbi-dev.cloudhub.io/flights --fail
 deployment:
   staging:
     branch: master
