@@ -11,7 +11,7 @@ dependencies:
 test:
   override:
     - sleep 1m
-    - mvn integration-test
+    - mvn integration-test -s settings.xml
     - mkdir -p $CIRCLE_TEST_REPORTS/munit/
     - mkdir -p $CIRCLE_TEST_REPORTS/int/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/munit/ \;
