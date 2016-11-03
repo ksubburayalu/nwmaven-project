@@ -11,7 +11,7 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/munit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/munit/ \;
     - sleep 1m
-    - respCode=$(curl -s -o response.txt -w '%{http_code}' -X GET http://testmaven-cbi-dev.cloudhub.io/flights if [$respCode -ne '200'] then echo "Exception" exit 1 fi)
+    - respCode=$(curl -s -o response.txt -w '%{http_code}' -X GET http://testmaven-cbi-dev.cloudhub.io/flights)
 deployment:
   staging:
     branch: master
