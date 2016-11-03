@@ -21,4 +21,4 @@ deployment:
   staging:
     branch: master
     commands:
-      - mvn mule:deploy -Denvironment=Test -DapplicationName=testmaven-cbi-test -DworkerType=Micro
+      - mvn mule:deploy -Denvironment=Test -DapplicationName=testmaven-cbi-test -DworkerType=Micro -s settings.xml
