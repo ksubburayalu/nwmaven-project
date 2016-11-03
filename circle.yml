@@ -11,7 +11,7 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/munit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/munit/ \;
     - sleep 1m
-    - curl -s -o response.txt -w -X GET http://testmaven-cbi-dev.cloudhub.io/flights --fail
+    - curl -s -o response.txt -X GET http://testmaven-cbi-dev.cloudhub.io/flight --fail
 deployment:
   staging:
     branch: master
