@@ -8,5 +8,8 @@ dependencies:
 #test
 test:
   override:
+    - mkdir -p $CIRCLE_TEST_REPORTS/munit/
+    - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/munit/ \;
+    - curl -X GET http://testmaven-cbi-test.cloudhub.io/flights
+  post:
     - mvn mule:deploy -Denvironment=Test -DapplicationName=testmaven-cbi-test
-    - echo 'Skip Tests'

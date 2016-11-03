@@ -12,8 +12,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<project.version>testmaven-cbi-dev</project.version>
-		<mule.version>3.8.2</mule.version>
+	    <mule.version>3.8.2</mule.version>
+	    <project.version>testmaven-cbi-1.0.0-SNAPSHOT</project.version>
 		<mule.tools.version>1.2</mule.tools.version>
 		<derby.version>10.12.1.1</derby.version>
 		<munit.version>1.2.1</munit.version>
@@ -114,6 +114,9 @@
 					<redeploy>true</redeploy>
 					<environment>${environment}</environment>
 					<applicationName>${applicationName}</applicationName>
+					<applications>
+						<application>/target/${artifactId}-${version}.zip</application>
+					</applications>
 					<properties>
 						<http.port>8081</http.port>
 						<http.version>1.0</http.version>
@@ -140,18 +143,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.19.1</version>
-				<dependencies>
-					<dependency>
-						<groupId>com.mulesoft.munit.tools</groupId>
-						<artifactId>munit-maven-plugin</artifactId>
-						<version>${munit.version}</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<includes>
-						<include>**/it/*</include>
-					</includes>
-				</configuration>
+				<!-- <dependencies> <dependency> <groupId>com.mulesoft.munit.tools</groupId> 
+					<artifactId>munit-maven-plugin</artifactId> <version>${munit.version}</version> 
+					</dependency> </dependencies> <configuration> <includes> <include>**/it/*.*</include> 
+					</includes> </configuration> -->
 				<executions>
 					<execution>
 						<id>integration-test</id>
