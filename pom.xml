@@ -131,23 +131,12 @@
 							<goal>deploy</goal>
 						</goals>
 					</execution>
-
-					<!-- <execution> <id>deploy-testch</id> <phase>testdeployment</phase> 
-						<goals> <goal>deploy</goal> </goals> <configuration> <deploymentType>cloudhub</deploymentType> 
-						<muleVersion>${mule.version}</muleVersion> <username>${env.MULE_ANYPOINT_USER}</username> 
-						<password>${env.MULE_ANYPOINT_PASS}</password> <workerType>Micro</workerType> 
-						<redeploy>true</redeploy> <environment>Test</environment> <applicationName>testmaven-cbi-test</applicationName> 
-						</configuration> </execution> -->
 				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.19.1</version>
-				<!-- <dependencies> <dependency> <groupId>com.mulesoft.munit.tools</groupId> 
-					<artifactId>munit-maven-plugin</artifactId> <version>${munit.version}</version> 
-					</dependency> </dependencies> <configuration> <includes> <include>**/it/*.*</include> 
-					</includes> </configuration> -->
 				<executions>
 					<execution>
 						<id>integration-test</id>
@@ -273,6 +262,18 @@
 			<version>${munit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<repositories>
