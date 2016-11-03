@@ -4,12 +4,12 @@ machine:
 #dependencies
 dependencies:
   override:
-    - mvn clean package mule:deploy -Denvironment=Development -DapplicationName=testmaven-cbi-dev integration-test -s settings.xml
+    - mvn clean package mule:deploy -Denvironment=Development -DapplicationName=testmaven-cbi-dev -DworkerType=Micro integration-test -s settings.xml
 #test
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/munit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/munit/ \;
-    - curl -X GET http://testmaven-cbi-test.cloudhub.io/flights
+    - curl -X GET http://testmaven-cbi-test.cloudhub.io/flight
   post:
-    - mvn mule:deploy -Denvironment=Test -DapplicationName=testmaven-cbi-test
+    - mvn mule:deploy -Denvironment=Test -DapplicationName=testmaven-cbi-test -DworkerType=Micro

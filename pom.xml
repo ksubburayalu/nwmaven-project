@@ -110,16 +110,17 @@
 					<muleVersion>${mule.version}</muleVersion>
 					<username>${env.MULE_ANYPOINT_USER}</username>
 					<password>${env.MULE_ANYPOINT_PASS}</password>
-					<workerType>Micro</workerType>
+					<workerType>${workerType}</workerType>
 					<redeploy>true</redeploy>
 					<environment>${environment}</environment>
 					<applicationName>${applicationName}</applicationName>
 					<applications>
-						<application>/target/${artifactId}-${version}.zip</application>
+						<application>/target/${project.artifactId}-${project.version}.zip</application>
 					</applications>
 					<properties>
 						<http.port>8081</http.port>
 						<http.version>1.0</http.version>
+						<secure.property1></secure.property1>
 					</properties>
 				</configuration>
 				<executions>
