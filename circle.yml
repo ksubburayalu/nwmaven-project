@@ -10,6 +10,6 @@ test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/munit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/munit/ \;
-    - curl -X GET http://testmaven-cbi-test.cloudhub.io/flight
+    - respCode=$(curl -s -o response.txt -w '%{http_code}’ -X GET http://testmaven-cbi-test.cloudhub.io/flights;) if [$respCode -ne "200"]; then echo "Exception"; exit 1; fi
   post:
     - mvn mule:deploy -Denvironment=Test -DapplicationName=testmaven-cbi-test -DworkerType=Micro
